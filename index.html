@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quick Bus Access - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main-container">
+    <div class="content">
+      <h1>Login</h1>
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Login</button>
+      <p>Don't have an account? <a href="#" onclick="showRegister()">Register Now</a></p>
+    </div>
+  </div>
+
+  <!-- Register Form -->
+  <div class="main-container hidden" id="registerPage">
+    <div class="content">
+      <h1>Register</h1>
+      <input type="text" id="regUsername" placeholder="Choose Username">
+      <input type="password" id="regPassword" placeholder="Choose Password">
+      <button onclick="register()">Register</button>
+      <p>Already have an account? <a href="#" onclick="showLogin()">Back to Login</a></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

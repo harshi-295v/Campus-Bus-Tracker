@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main-container">
+    <div class="content auth-box">
+      <h1 id="formTitle">Login</h1>
+
+      <!-- Login Form -->
+      <div id="loginForm">
+        <input type="text" id="loginUsername" placeholder="Username" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+        <p class="switch">Don't have an account? <a href="#" onclick="showRegister()">Register Now</a></p>
+      </div>
+
+      <!-- Register Form -->
+      <div id="registerForm" style="display: none;">
+        <input type="text" id="registerUsername" placeholder="Choose Username" required>
+        <input type="password" id="registerPassword" placeholder="Choose Password" required>
+        <button onclick="register()">Register</button>
+        <p class="switch">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showRegister() {
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("registerForm").style.display = "block";
+      document.getElementById("formTitle").innerText = "Register";
+    }
+
+    function showLogin() {
+      document.getElementById("registerForm").style.display = "none";
+      document.getElementById("loginForm").style.display = "block";
+      document.getElementById("formTitle").innerText = "Login";
+    }
+
+    function register() {
+      const user = document.getElementById("registerUsername").value;
+      const pass = document.getElementById("registerPassword").value;
+
+      if (user && pass) {
+        localStorage.setItem("username", user);
+        localStorage.setItem("password", pass);
+        alert("Registered successfully! Please login.");
+        showLogin();
+      } else {
+        alert("Please enter username and password.");
+      }
+    }
+
+    function login() {
+      const user = document.getElementById("loginUsername").value;
+      const pass = document.getElementById("loginPassword").value;
+      const savedUser = localStorage.getItem("username");
+      const savedPass = localStorage.getItem("password");
+
+      if (user === savedUser && pass === savedPass) {
+        localStorage.setItem("loggedInUser", user);
+        window.location.href = "home.html";
+      } else {
+        alert("Invalid username or password!");
+      }
+    }
+  </script>
+</body>
+</html>
